@@ -42,7 +42,6 @@ app.post('/support/messages/', function(req, res){
 		    }
 		});
 	}
-
 });
 
 //instantiate server
