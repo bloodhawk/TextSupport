@@ -1,0 +1,14 @@
+<div ng-repeat="(key, val) in numbers" class="col-md-12">
+    <h2 class="top">{{key}}</h2>
+    <button ng-click="showReply = !showReply">Reply</button>
+    <div ng-show="showReply">
+         <input ng-model="modelObj[key]" type="text">
+         <button ng-click="sendSMS(key)">Submit</button>
+    </div>
+    <div ng-repeat="(nkey, nval) in val">
+        <hr />
+        <h4 class="text-muted">Sent {{nval.date_sent}}</h4>
+        <p>Message: {{nval.body}} <span class="text-muted" ng-if="nval.support"><small>From support</small></span> <span class="text-muted" ng-if="!nval.support"><small>From customer</small></span></p>
+    </div>
+
+</div>
