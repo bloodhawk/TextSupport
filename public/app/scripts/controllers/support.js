@@ -17,8 +17,8 @@ angular.module('textSupportApp')
 	});
 	$scope.sendSMS = function(toNum){
 		var input = $scope.modelObj[toNum];
+		nback.sendSMS(toNum, input);
 		$scope.modelObj[toNum] = '';
-		nback.sendSMS(toNum.trim(), input);
 
 	};
 });

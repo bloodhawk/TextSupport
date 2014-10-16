@@ -16,7 +16,6 @@ app.use(express.static(__dirname + '/public/dist/')); //serve static content in 
 app.post('/support/messages/', function(req, res){
 	var toNum = req.body.toNum;
 	var body = req.body.message;
-	console.log(toNum);
 	var FireRoot = new Firebase('https://textsupport92.firebaseio.com/numbers/' + toNum + '/');
 	if(toNum && body){
 		client.sendMessage({
@@ -26,8 +25,8 @@ app.post('/support/messages/', function(req, res){
 			}, function(err, responseData) { 
 		    if (!err && responseData.errorCode === null) { 
 		    	var fBody = responseData.body;
-		    	var fDate = responseData.date_sent;
-		    	FireRoot.set({
+		    	var fDate = responseData.date_created;
+		    	FireRoot.push({
 		    		body: fBody,
 		    		date_sent: fDate,
 		    		support: true
