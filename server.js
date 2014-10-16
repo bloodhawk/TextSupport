@@ -44,6 +44,21 @@ app.post('/support/messages/', function(req, res){
 	}
 });
 
+app.get('/support/resources/:resource_name', function (req, res, next) {
+
+  var options = {
+    root: __dirname + '/public/',
+    dotfiles: 'deny'
+  };
+
+  var fileName = req.params.resource_name;
+  res.sendFile(fileName, options, function (err) {
+    if (err) {
+      res.status(404).sendFile('404.html', options);
+    }
+  });
+
+})
 //instantiate server
 app.listen(port, function(){
 	console.log("Server running on port: " + port);
